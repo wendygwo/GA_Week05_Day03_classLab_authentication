@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AuthenticationLab</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<hr>
+<%= session['user_id'].inspect %> <!-- For troubleshooting only to see the session cookie -->
+<hr>
+
+<!-- Update this later. Shouldn't have logic in the controller -->
+<% if session['user_id']==nil %>
+<p> you're not logged in<p>
+<%else%>
+	<p>You're logged in</p>
+	<%= link_to 'Log out', logout_path, method: :delete %> <!-- This goes to my self named logout_path -->
+<%end%>
+
+<%= yield %>
+
+</body>
+</html>
