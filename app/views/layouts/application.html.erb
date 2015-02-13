@@ -14,13 +14,18 @@
 
 <!-- Update this later. Shouldn't have logic in the controller -->
 <% if session['user_id']==nil %>
-<p> you're not logged in<p>
+	<%= link_to 'Log in', new_session_path %>
 <%else%>
-	<p>You're logged in</p>
-	<%= link_to 'Log out', logout_path, method: :delete %> <!-- This goes to my self named logout_path -->
+	<%= link_to 'Log out', logout_path, method: :delete %> <!-- This requests my self named logout_path with the method delete. You have to specify the method of delete because by default all http requests are gets-->
 <%end%>
 
 <%= yield %>
+
+<br>
+<br>
+<hr>
+<h3>Parameters for troubleshooting. Delete this later when app is working</h3>
+<%= params.inspect %>
 
 </body>
 </html>
